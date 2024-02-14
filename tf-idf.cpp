@@ -186,20 +186,23 @@ vector<string> normalization(vector<string> s) {
     }
 }
 
-map<string, long long> tf(vector<vector<string>> docs) {
+map<string, long long> tf(vector<string> doc) {
     map<string, long long> freq;
+    for (string s : doc) {
+        freq[s]++;
+    }
+    return freq;
+}
+
+map<string, long double> idf(vector<vector<string>> docs) {
+    map<string, long long> freq;
+    map<string, long double> m;
     for (vector<string> doc : docs) {
         set<string> counted;
         for (string s : doc) {
             if (!counted.count(s)) freq[s]++, counted.insert(s);
         }
     }
-    return freq;
-}
-
-map<string, long double> idf(vector<vector<string>> docs) {
-    map<string, long long> freq = tf(docs);
-    map<string, long double> m;
     for (auto s : freq) {
         m[s.first] = log((long long)docs.size() / s.second) / log(10);
     }
