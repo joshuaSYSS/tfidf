@@ -10,27 +10,52 @@ https://en.wikipedia.org/wiki/Tf%E2%80%93idf
 #include <bits/stdc++.h>
 #include "tf-idf.cpp"
 using namespace std;
-void setIO(string s) {
-    freopen((s + ".in").c_str(), "r", stdin);
-    freopen((s + ".out").c_str(), "w", stdout);
-}
 int main(void){
-    //Set Standard Input and Output File
-    setIO("example-file.txt");
-
-    //Read From File
+    ifstream e1("example.txt"), e2("example2.txt"), e3("example3.txt"), e4("example4.txt");
+    string i1, i2, i3, i4;
     string input;
-    cin >> input;
+    while (getline(e1, input)) {
+        i1 += input + " ";
+    }
+    while (getline(e2, input)) {
+        i2 += input + " ";
+    }
+    while (getline(e3, input)) {
+        i3 += input + " ";
+    }
+    while (getline(e4, input)) {
+        i4 += input + " ";
+    }
 
-    //Noise Removal and Tokenization
-    vector<string> result = tokenize(input);
+    //Lower casing, noise removal and tokenization
+    vector<string> result = tokenize(i1);
 
     //Normalization including stopword removal and stemming
     result = normalization(result);
 
-    //Get tf (Term Frequency)
+    //Get tf (Term Frequency) of example.txt
     map<string, long long> termFrequency = tf(result);
+    for (auto x : termFrequency) {
+        cout << x.first << ": " << x.second << '\n';
+    }
 
-    //Get idf (Inverse Document Frequency)
+
+    vector<string> result2 = tokenize(i2);
+    result2 = normalization(result2);
+
+    vector<string> result3 = tokenize(i3);
+    result3 = normalization(result3);
+
+    vector<string> result4 = tokenize(i4);
+    result4 = normalization(result4);
+
+    //Combining all poems into a collection of poems
+    vector<vector<string>> v = { result, result2, result3, result4 };
+
+    //Get idf (Inverse Document Frequency) among all these poems
+    map<string, long double> inverseDocumentFrequency = idf(v);
+    for (auto x : inverseDocumentFrequency) {
+        cout << x.first << ": " << x.second << '\n';
+    }
 }
 ```
