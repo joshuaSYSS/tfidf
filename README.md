@@ -6,7 +6,7 @@ In information retrieval, tf–idf (also TF*IDF, TFIDF, TF–IDF, or Tf–idf), 
 https://en.wikipedia.org/wiki/Tf%E2%80%93idf
 
 # Example
-```
+```cpp
 #include <bits/stdc++.h>
 #include "tf-idf.cpp"
 using namespace std;
