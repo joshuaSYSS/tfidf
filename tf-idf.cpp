@@ -184,6 +184,7 @@ vector<string> normalization(vector<string> s) {
         if (stopwords.count(p)) continue;
         res.push_back(p);
     }
+    return res;
 }
 
 map<string, long long> tf(vector<string> doc) {
