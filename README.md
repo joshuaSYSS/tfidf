@@ -2,8 +2,11 @@
 tf-idf (Term-Frequency Inverse-Document-Frequency) C++ Library
 
 # What is TF-IDF
-In information retrieval, tf–idf (also TF*IDF, TFIDF, TF–IDF, or Tf–idf), short for term frequency–inverse document frequency, is a measure of importance of a word to a document in a collection or corpus, adjusted for the fact that some words appear more frequently in general
+In information retrieval, tf–idf, short for term frequency–inverse document frequency, is a measure of importance of a word to a document in a collection or corpus, adjusted for the fact that some words appear more frequently in general
 https://en.wikipedia.org/wiki/Tf%E2%80%93idf
+
+# What does this library do
+This tfidf library offers simple functions to tokenize, stemming (Using other libraries) and other normalization on a / multiple text(s).
 
 # Example
 ```cpp
